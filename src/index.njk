@@ -2,45 +2,51 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RBQ-2A</title>
   <link rel="stylesheet" href="/css/styles.css">
   <script src="/js/alpine.min.js" defer></script>
   <script src="/js/questions.js"></script>
 </head>
-<body class="px-8 md:px-12">
-<h1 class="pt-16 pb-4 text-4xl font-bold">Adult Repetitive Behavior Questionnaire-2</h1>
+<body>
+<div class="relative px-4 mx-auto overflow-hidden max-w-7xl sm:px-6 lg:px-8">
+  <div class="max-w-3xl mx-auto">
 
-<p class="pb-12">Read each question carefully and choose the answer you feel is most representative. There are no right or wrong answers, or trick questions.</p>
+    <h1 class="pt-10 pb-4 text-4xl font-bold md:pt-16">Adult Repetitive Behavior Questionnaire-2</h1>
 
-<div x-data="questions()" x-init="getData()">
-  <template x-for="question in questions">
-    <div class="block">
-      <p>
-        <strong x-text="question.title"></strong>
-        <br x-show="question.eg"><span class="italic text-gray-900" x-text="question.eg"></span></br>
-      </p>
-      <div class="pt-2 pb-6">
-        <template x-for="option, index in question.options">
-          <div class="px-4">
-            <label class="inline-flex items-center">
-              <input class="text-indigo-600" x-on:click="calculateScore" type="radio" :value="index + 1" :name="question.id.toString()" :id="question.title">
-              <span class="ml-2" x-text="option"></span>
-            </label>
+    <p class="pb-12">Read each question carefully and choose the answer you feel is most representative. There are no right or wrong answers, or trick questions.</p>
+
+    <div x-data="questions()" x-init="getData()">
+      <template x-for="question in questions">
+        <div class="block">
+          <p>
+            <strong x-text="question.title"></strong>
+            <br x-show="question.eg"><span class="italic text-gray-900" x-text="question.eg"></span></br>
+          </p>
+          <div class="pt-2 pb-6">
+            <template x-for="option, index in question.options">
+              <div class="px-4">
+                <label class="inline-flex items-center">
+                  <input class="text-indigo-600" x-on:click="calculateScore" type="radio" :value="index + 1" :name="question.id.toString()" :id="question.title">
+                  <span class="ml-2" x-text="option"></span>
+                </label>
+              </div>
+            </template>
           </div>
-        </template>
+        </div>
+      </template>
+
+      <div class="pt-4 pb-16">
+        <h2 class="pb-4 text-2xl font-semibold">Scoring</h2>
+        <p>The scoring range is between 0 and 60.<br />The threshold score for restricted and repetitive behaviors is 26.<br />The average autistic score is 36.<br />The average non-autistic score is 25.</p>
+
+        <button class="pt-6 font-black" x-text="`Your score: ${score}`"></button>
+        <p class="pt-8">Read more regarding the reliability of the RBQ-2A: <a class="font-semibold text-indigo-600" href="https://www.biomedcentral.com/epdf/10.1186/s13229-018-0242-4">Assessing Subtypes of Restricted and Repetitive Behavior Using the Adult Repetetive Behavior Questionnaire-2 in Autistic Adults</a>
+        <p class="pt-4">And read the original study: <a class="font-semibold text-indigo-600" href="https://www.readcube.com/articles/10.1007/s10803-015-2514-6">The Adult Repetitive Behaviors Questionnaire-2 (RBQ-2A) - A Self-Report Measure of Restricted and Repetitive Behaviors</a>
       </div>
     </div>
-  </template>
 
-  <div class="pt-4 pb-16">
-    <h2 class="pb-4 text-2xl font-semibold">Scoring</h2>
-    <p>The scoring range is between 0 and 60.<br />The threshold score for restricted and repetitive behaviors is 26.<br />The average autistic score is 36.<br />The average non-autistic score is 25.</p>
-
-    <button class="pt-6 font-black" x-text="`Your score: ${score}`"></button>
-    <p class="pt-8">Read more regarding the reliability of the RBQ-2A: <a class="font-semibold text-indigo-600" href="https://www.biomedcentral.com/epdf/10.1186/s13229-018-0242-4">Assessing Subtypes of Restricted and Repetitive Behavior Using the Adult Repetetive Behavior Questionnaire-2 in Autistic Adults</a>
-    <p class="pt-4">And read the original study: <a class="font-semibold text-indigo-600" href="https://www.readcube.com/articles/10.1007/s10803-015-2514-6">The Adult Repetitive Behaviors Questionnaire-2 (RBQ-2A) - A Self-Report Measure of Restricted and Repetitive Behaviors</a>
   </div>
-</div>
-
+  </div>
 </body>
 </html>

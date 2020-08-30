@@ -10,7 +10,9 @@ module.exports = {
     extend: {
     }
   },
-  variants: {},
+  variants: {
+    appearance: ['responsive'],
+  },
   plugins: [],
   future: {
     removeDeprecatedGapUtilities: true,
