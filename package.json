@@ -1,0 +1,39 @@
+{
+  "name": "tens",
+  "version": "1.0.0",
+  "description": "Tailwind, Eleventy, and Netlify CMS starter.",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm-run-all clean build:css build:html",
+    "build:css": "postcss src/includes/css/tailwind.css -o src/css/styles.css",
+    "build:html": "eleventy",
+    "watch": "npm-run-all --parallel watch:css watch:html",
+    "watch:css": "postcss src/includes/css/tailwind.css -o src/css/styles.css --watch",
+    "watch:html": "ELEVENTY_ENV=development eleventy --serve --port=8181",
+    "debug": "DEBUG=* eleventy",
+    "clean": "del-cli dist",
+    "start": "npm-run-all build watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^9.8.6",
+    "del-cli": "^3.0.1",
+    "dotenv": "^8.2.0",
+    "markdown-it": "^10.0.0",
+    "markdown-it-abbr": "^1.0.4",
+    "markdown-it-anchor": "^5.3.0",
+    "markdown-it-container": "^2.0.0",
+    "markdown-it-emoji": "^1.4.0",
+    "markdown-it-footnote": "^3.0.2",
+    "markdown-it-github-headings": "^2.0.0",
+    "markdown-it-mark": "^3.0.0",
+    "npm-run-all": "^4.1.5",
+    "postcss-clean": "^1.1.0",
+    "postcss-cli": "^7.1.1",
+    "tailwindcss": "^1.7.0"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^0.10.0"
+  }
+}
